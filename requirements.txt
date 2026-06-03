@@ -1,0 +1,7 @@
+streamlit==1.45.1
+supabase==2.15.2
+google-genai==1.16.0
+reportlab==4.4.1
+matplotlib==3.10.3
+resend==2.10.0
+python-dotenv==1.1.0
