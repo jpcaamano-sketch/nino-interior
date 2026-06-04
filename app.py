@@ -13,73 +13,65 @@ st.set_page_config(
 # ─── CSS ──────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 #MainMenu, footer, header { visibility: hidden; }
 [data-testid="stToolbarActions"], [data-testid="stDeployButton"] { display: none !important; }
+[data-testid="collapsedControl"] { display: none !important; }
+header[data-testid="stHeader"] { background: transparent !important; border-bottom: none !important; box-shadow: none !important; }
 
-html, body, [data-testid="stAppViewContainer"] {
-  background: #1a1208 !important;
+html, body, [data-testid="stAppViewContainer"], [data-testid="stMain"] {
+  background: #4E32AD !important;
 }
-[data-testid="stAppViewContainer"] > .main { background: #1a1208; }
-[data-testid="stMain"] { background: #1a1208; }
+[data-testid="stAppViewContainer"] > .main { background: #4E32AD; }
+[data-testid="stVerticalBlock"] { background: transparent !important; }
+section[data-testid="stSidebar"] { display: none !important; }
 .block-container { max-width: 700px; padding: 2rem 1.5rem; }
 
-h1, h2, h3 { font-family: 'EB Garamond', serif !important; color: #d4a853 !important; }
-p, li, label, div { font-family: 'Inter', sans-serif; }
+* { font-family: 'Inter', sans-serif !important; }
+h1, h2, h3 { color: #DCFE77 !important; }
+p, li { color: #F0ECFF !important; }
 
-.stTextInput input, .stTextInput textarea {
-  background: #251d10 !important;
-  color: #f5ecd7 !important;
-  border: 1px solid rgba(212,168,83,.3) !important;
+[data-testid="stTextInput"] input,
+[data-testid="stTextArea"] textarea {
+  background: rgba(255,255,255,.1) !important;
+  color: #F0ECFF !important;
+  border: 1px solid rgba(255,255,255,.2) !important;
   border-radius: 8px !important;
 }
-.stTextArea textarea {
-  background: #251d10 !important;
-  color: #f5ecd7 !important;
-  border: 1px solid rgba(212,168,83,.3) !important;
-  border-radius: 8px !important;
-  min-height: 110px !important;
-}
-.stTextInput input:focus, .stTextArea textarea:focus {
-  border-color: rgba(212,168,83,.7) !important;
-  box-shadow: 0 0 0 2px rgba(212,168,83,.15) !important;
+[data-testid="stTextInput"] input:focus,
+[data-testid="stTextArea"] textarea:focus {
+  border-color: rgba(220,254,119,.5) !important;
+  box-shadow: 0 0 0 2px rgba(220,254,119,.1) !important;
 }
 
-[data-testid="stRadio"] label { color: #c4b090 !important; }
-[data-testid="stRadio"] [data-testid="stMarkdownContainer"] p { color: #f5ecd7 !important; font-size: .97rem; }
+[data-testid="stRadio"] label { color: rgba(240,236,255,.8) !important; }
+[data-testid="stRadio"] [data-testid="stMarkdownContainer"] p { color: #F0ECFF !important; font-size: .97rem; }
 
-.stButton > button {
-  background: #d4a853 !important;
-  color: #1a1208 !important;
-  border: none !important;
-  border-radius: 8px !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  padding: 12px 36px !important;
-  transition: .2s !important;
-  width: 100%;
+[data-testid="stButton"] > button {
+  background: #FF6B4E !important; color: #fff !important;
+  border: none !important; border-radius: 8px !important;
+  font-weight: 700 !important; font-size: 15px !important;
+  padding: 12px 32px !important; width: 100% !important; transition: .2s !important;
 }
-.stButton > button:hover { background: #e8c97a !important; transform: translateY(-1px); }
-.stButton > button:disabled { background: #3d3020 !important; color: #6a5a3a !important; }
+[data-testid="stButton"] > button:hover { background: #ff8570 !important; transform: translateY(-1px) !important; }
+[data-testid="stButton"] > button:disabled { background: #2B1D8A !important; color: rgba(240,236,255,.4) !important; }
 
 .btn-secondary > button {
-  background: transparent !important;
-  color: #9a8872 !important;
-  border: 1px solid rgba(154,136,114,.4) !important;
+  background: transparent !important; color: rgba(240,236,255,.6) !important;
+  border: 1px solid rgba(240,236,255,.25) !important;
 }
-.btn-secondary > button:hover { border-color: rgba(212,168,83,.5) !important; color: #d4a853 !important; }
+.btn-secondary > button:hover { border-color: rgba(220,254,119,.5) !important; color: #DCFE77 !important; }
 
-.stDownloadButton > button {
-  background: #3d3020 !important;
-  color: #d4a853 !important;
-  border: 1px solid rgba(212,168,83,.3) !important;
-  border-radius: 8px !important;
-  width: 100%;
+[data-testid="stDownloadButton"] > button {
+  background: #2B1D8A !important; color: #DCFE77 !important;
+  border: 1px solid rgba(220,254,119,.3) !important; border-radius: 8px !important; width: 100%;
 }
 
-[data-testid="stProgress"] > div { background: #251d10 !important; border-radius: 6px; }
-[data-testid="stProgress"] > div > div { background: #d4a853 !important; border-radius: 6px; }
+[data-testid="stProgress"] > div { background: #2B1D8A !important; border-radius: 6px; }
+[data-testid="stProgress"] > div > div { background: #FF6B4E !important; border-radius: 6px; }
+
+hr { border-color: rgba(255,255,255,.1) !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -91,16 +83,16 @@ def ir_a(pagina: str):
 
 
 def gold(txt: str) -> str:
-    return f'<span style="color:#d4a853">{txt}</span>'
+    return f'<span style="color:#DCFE77">{txt}</span>'
 
 
 def muted(txt: str) -> str:
-    return f'<span style="color:#9a8872;font-size:.88rem">{txt}</span>'
+    return f'<span style="color:rgba(240,236,255,.65);font-size:.88rem">{txt}</span>'
 
 
-def card(contenido: str, padding="28px", border_color="rgba(212,168,83,.18)"):
+def card(contenido: str, padding="28px", border_color="rgba(220,254,119,.15)"):
     st.markdown(
-        f'<div style="background:#251d10;border:1px solid {border_color};'
+        f'<div style="background:#2B1D8A;border:1px solid {border_color};'
         f'border-radius:12px;padding:{padding};margin-bottom:16px;">{contenido}</div>',
         unsafe_allow_html=True)
 
@@ -171,13 +163,13 @@ def page_inicio():
         f'<h1 style="text-align:center;font-size:2.8rem;margin-bottom:.3rem">Mi Niño Interior</h1>',
         unsafe_allow_html=True)
     st.markdown(
-        '<p style="text-align:center;color:#9a8872;font-family:\'EB Garamond\',serif;'
+        '<p style="text-align:center;color:rgba(240,236,255,.7);'
         'font-style:italic;font-size:1.15rem;margin-bottom:2rem">'
         'Un viaje hacia la parte de ti que aún espera ser vista</p>',
         unsafe_allow_html=True)
 
     card(
-        '<p style="color:#c4b090;line-height:1.9;margin:0">'
+        '<p style="color:rgba(240,236,255,.85);line-height:1.9;margin:0">'
         'En algún momento de tu infancia, una parte de ti aprendió a protegerse. '
         'Desarrolló estrategias para sobrevivir lo que sentía — y esas estrategias '
         'siguen activas hoy, aunque ya no las necesites de la misma manera.<br><br>'
@@ -186,8 +178,8 @@ def page_inicio():
     )
 
     st.markdown(
-        '<p style="color:#6a5a3a;font-size:.82rem;text-align:center;margin-bottom:1.5rem">'
-        '⏱ 10 a 15 minutos · Gratuito · Sin registro</p>',
+        '<p style="color:rgba(240,236,255,.55);font-size:.82rem;text-align:center;margin-bottom:1.5rem">'
+        '⏱ 10 a 15 minutos · Pago único vía Flow</p>',
         unsafe_allow_html=True)
 
     with st.form("form_inicio"):
@@ -196,8 +188,8 @@ def page_inicio():
         correo = st.text_input("Tu correo", placeholder="Para recibir tu carta y reporte",
                                value=st.session_state.correo)
         st.markdown(
-            '<p style="color:#6a5a3a;font-size:.78rem;margin-top:8px">'
-            '<b>Disclaimer:</b> Esta herramienta es una experiencia de autoconocimiento. '
+            '<p style="color:rgba(240,236,255,.5);font-size:.78rem;margin-top:8px">'
+            '<b>Aviso:</b> Esta herramienta es una experiencia de autoconocimiento. '
             'No es un diagnóstico clínico ni reemplaza la psicoterapia. '
             'Si sientes angustia intensa durante o después, busca apoyo profesional.</p>',
             unsafe_allow_html=True)
